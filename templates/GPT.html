@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>我的博客</title>
+  <style type="text/css">
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    #header {
+      background-color: #333;
+      color: #fff;
+      height: 60px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    #header h1 {
+      margin: 0;
+      font-size: 24px;
+      float: left;
+    }
+    #header nav {
+      float: right;
+    }
+    #header nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    #header nav li {
+      display: inline-block;
+      margin-left: 10px;
+    }
+    #header nav li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    #header nav li a:hover {
+      background:linear-gradient(to right,rgb(91, 164, 176),rgb(218, 142, 188))
+    }
+    #content {
+      padding: 20px;
+    }
+    .post {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    .post h2 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #333;
+    }
+    .post p {
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 10px 0;
+    }
+    .post .read-more {
+      display: block;
+      text-align: right;
+      margin-top: 10px;
+    }
+    .post .read-more a {
+      color: #333;
+      text-decoration: none;
+    }
+    .post .read-more a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <h1>我的博客</h1>
+    <nav>
+      <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">博客</a></li>
+        <li><a href="#">关于我</a></li>
+        <li><a href="#">联系我</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="content">
+    <div class="post">
+      <h2>这是我的第一篇博客</h2>
+      <p>欢迎来到我的博客！这是我的第一篇博客，我将在这里和大家分享我的一些想法和经验。我是一名程序员，目前主要从事web开发方面的工作。我希望我的博客能够对你有所帮助，也希望和大家交流，共同进步。</p>
+      <div class="read-more"><a href="#">阅读更多</a></div>
+    </div>

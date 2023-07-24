@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/editormd/css/editormd.min.css" >
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <title>阅读详情</title>
+    <style>
+  
+      .read{
+        margin-left: 20%;
+        width: 80%;
+        height: 720px;
+       
+       
+      }
+.sidebar {
+  position: fixed;
+  top: 90px;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  resize: horizontal;
+}
+
+.card-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.list-group {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.list-group-item {
+  padding: 5px 10px;
+  border: none;
+}
+
+.list-group-item.active {
+  background-color: #e9ecef;
+  color: #333;
+}
+
+.list-group-item:focus,
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  color: #333;
+}
+    </style>
+    
+</head>
+<body>
+    <div>
+        {{template "header"}}
+    </div>
+    <div class=" backimage" >
+        <div class="row">
+          <div id="sidebar" class="col-lg-3 col-md-4">
+            <div class="sidebar">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">目录导航</h5>
+                  <ul class="list-group list-group-flush"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-8  read  ">
+            {{.Content}}
+          </div>
+        </div>
+      </div>
+      <script>
+$(document).ready(function() {
+  var sidebarWidth = 250;
+
+  $('#sidebar').resizable({
+    handles: 'e',
+    minWidth: 200,
+    maxWidth: 500,
+    start: function(event, ui) {
+      $(this).addClass('resizing');
+    },
+    stop: function(event, ui) {
+      sidebarWidth = ui.size.width;
+      $(this).removeClass('resizing');
+    }
+  });
+
+  $(window).on('resize', function(event) {
+    var contentWidth = $('body').width() - sidebarWidth - 30;
+    $('.content').css('width', contentWidth + 'px');
+  });
+
+  var headings = $('h2, h3');
+  var navContent = '';
+
+  headings.each(function(index) {
+    var current = $(this);
+    var tag = current.prop('tagName');
+    var text = current.text();
+    var id = 'heading' + index;
+
+    current.attr('id', id);
+
+    if (tag === 'H2') {
+      navContent += '<a class="list-group-item list-group-item-action" href="#' + id + '">' + text + '</a>';
+    } else if (tag === 'H3') {
+      navContent += '<a class="list-group-item list-group-item-action ml-3" href="#' + id + '">' + text + '</a>';
+    }
+  });
+
+  $('.list-group').html(navContent);
+
+  // 更新目录框宽度
+  var sidebarContentWidth = sidebarWidth - 30;
+  $('#sidebar .list-group').css('width', sidebarContentWidth + 'px');
+});
+</script>
+   
+</body>
+</html>
